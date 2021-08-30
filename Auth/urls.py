@@ -27,12 +27,14 @@ from django.contrib.auth.views import LogoutView
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
+
+    #   Vistas para Registro y Login
     path('registro', Registro.as_view(), name="Registro" ),
     path('accounts/login/', LoginView.as_view(), name="Login" ),
     path('logout', LogoutView.as_view(),{'next_page': settings.LOGOUT_REDIRECT_URL}, name='LogOut'),
 
     #   Vistas Necesarias para Recuperar Password
-    path('reset_password', auth_views.PasswordResetView.as_view( template_name='05-Auth/password_reset.html'), name="reset_password"),
+    path('reset_password', auth_views.PasswordResetView.as_view( template_name='05-Auth/password_reset.html' ), name="reset_password"),
     path('reset_password_sent', auth_views.PasswordResetDoneView.as_view( template_name='05-Auth/password_reset_sent.html' ), name="password_reset_done"),
     path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(  template_name='05-Auth/password_reset_form.html' ), name="password_reset_confirm"),
     path('reset_password_complete', auth_views.PasswordResetCompleteView.as_view( template_name='05-Auth/password_reset_done.html'), name="password_reset_complete"),
