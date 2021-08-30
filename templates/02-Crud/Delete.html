@@ -1,0 +1,36 @@
+{% extends '01-Base/Layout.html' %}
+
+{% block content %}
+
+
+<div class="container" >
+        <div class="row">
+            <div class="col-4">
+
+                    <div class="card" style="width: 18rem; margin-top: 5rem; margin-left: 29rem;">
+                        <img src="{{heroe.imagen.url }}" class="card-img-top" alt=" {{ object.Character }} "/>
+                            <div class="card-body">
+                                <h5 class="card-title">{{ object.Character }}</h5>
+                                <p class="card-text"> {{ object.Publisher }} </p>
+                                <p class="card-text"> {{ object.Alter_ego }} </p>
+                            </div>
+                    </div>
+
+
+            </div>
+
+        </div>
+
+
+<form action="" method="POST" style="margin-top: 5rem; margin-left: 29rem;">
+{% csrf_token %}
+    
+    <button type="submit" class="btn btn-primary" > Confirmar </button>
+    <a href=" {% url 'ListaHeroes' %} "> Cancelar </a>
+
+</form>
+
+
+</div>
+
+{% endblock content %}

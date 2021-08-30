@@ -1,0 +1,53 @@
+{% extends '01-Base/Layout.html' %}
+
+
+{% block content %}
+
+
+
+<div class="container mt-5">
+
+        <div class="row">
+                {% for heroe in object_list %}
+            <div class="col-4">
+
+                    <div class="card" style="width: 18rem; margin-bottom: 1rem; margin-top: 1rem;">
+                        <img src="{{heroe.imagen.url }}" class="card-img-top" alt=" {{ heroe.Character }} "/>
+                            <div class="card-body">
+                                <h5 class="card-title">{{ heroe.Character }}</h5>
+                                <p class="card-text"> {{ heroe.Publisher }} </p>
+                                <p class="card-text"> {{ heroe.Alter_ego }} </p>
+                                <a href=" {% url 'UpdateHeroes' heroe.id %} " class="btn btn-primary">Editar Heroe</a>
+                                <a href=" {% url 'DeleteHeroes' heroe.id %} " class="btn btn-primary">Eliminar Heroe</a>
+                            </div>
+                    </div>
+
+
+            </div>
+                {% endfor %}
+        </div>
+
+        <!-- Paginacion de elementos -->
+        <div class="pagination" style="text-align: center; justify-content: center; margin-top: 2rem; margin-bottom: 2rem;">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1" class="btn btn-primary">&laquo; first</a>
+                    <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-primary">previous</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}" class="btn btn-primary">next</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}" class="btn btn-primary">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+</div>
+
+
+
+</div>
+{% endblock content %}

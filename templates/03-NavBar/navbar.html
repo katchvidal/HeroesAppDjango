@@ -1,0 +1,24 @@
+{% load static %}
+<nav class="navbar navbar-dark" style="background-color: black; height: 100px;">
+  <!-- Navbar content -->
+
+  <div class="container-fluid">
+    {% if user.username %}
+    <a class="navbar-brand" href=" {% url 'ListaHeroes' %} " >
+    Home 
+    <img style="width: 80px; height: 60px;"  src=" {% static 'homer.png' %} " alt="imagen "/>  
+    </a>
+    <a class="navbar-brand" href=" {% url 'CreateHeroes' %} ">Crear Heroe</a>
+    <a class="navbar-brand" href=" {% url 'MarvelList' %} ">Ver Marvel</a>
+    <a class="navbar-brand" href=" {% url 'DCList' %} ">Ver DC </a>
+    <a class="navbar-brand" href=" {% url 'LogOut' %} ">Logout </a>
+
+    {% else %}
+
+    <a class="navbar-brand" href=" {% url 'Registro' %} ">Registro </a>
+    <a class="navbar-brand" href=" {% url 'Login' %} ">Login </a>
+
+    {% endif %}
+
+    
+</nav>
